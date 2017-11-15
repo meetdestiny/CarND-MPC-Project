@@ -62,6 +62,7 @@ For a stable run, I had to settle or 2sec duration. Which means my N was 20 and 
 
 I tuned the cost function parameters by trial-and-error method.The best speed and stability was achieved with following cost parameters. It was possible to complete the track at higher speed by increasing CTE_W but car was oscillating and going out of center far too much. 
 
+```
 const double  CTE_W = 2.0;
 const double EPSI_W=  1;
 const double V_W = 1;
@@ -69,4 +70,4 @@ const double  DELTA_W  =10000;
 const double  A_W =  50;
 const double  DDELTA_W = 1;
 const double DA_W =  1;
-
+```
