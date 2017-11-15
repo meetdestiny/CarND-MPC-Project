@@ -58,7 +58,7 @@ I used Time step duration of 0.1 ms which matches the actuator response time. Al
 
 ![Stop](stop.png)
 
-For a stable run, I had to settle or 2sec duration. Which means my N was 20 and dt was 0.1.
+For a stable run, I had to settle for 2sec duration. Which means my N was 20 and dt was 0.1.
 
 I tuned the cost function parameters by trial-and-error method.The best speed and stability was achieved with following cost parameters. It was possible to complete the track at higher speed by increasing CTE_W but car was oscillating and going out of center far too much. 
 
