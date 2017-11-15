@@ -51,7 +51,7 @@ I have implemented Model Predictive Control to drive a car simulator across a cu
 
 Following image from lecture demonstrates the Model equations in concise way:
 
-[Model](model.png)
+![Model](model.png)
 
 
 
