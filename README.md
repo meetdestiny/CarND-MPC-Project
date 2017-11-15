@@ -53,7 +53,7 @@ Following image from lecture demonstrates the Model equations in concise way:
 
 ![Model](model.png)
 
-WHile optimizing the model for maximum speed, I had to expriment with multiple hyperparameters. The model has a predefined latency of 100ms which accounts for actuators latency in real world. As such the state of car was projected 100ms into future. 
+While optimizing the model for maximum speed, I had to expriment with multiple hyperparameters. The model has a predefined latency of 100ms which accounts for actuators latency in real world. As such the state of car was projected 100ms into future. 
 I used Time step duration of 0.1 ms which matches the actuator response time. Also, for time steps I experimented with multiple values. However, if we keep more values for prediction, the model was geting into higher oscillation and even stopped working after few seconds. Here is an example of stopped car with N=30. 
 
 ![Stop](stop.png)
