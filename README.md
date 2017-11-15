@@ -47,11 +47,26 @@ I have implemented Model Predictive Control to drive a car simulator across a cu
 
 ### Model Description
 
-[x,y,ψ,v] is the state of the car, L​f​​ is a physical characteristic of the vehicle, and [δ,a] are the actuators of my model. δ is used to represent the steering wheel. In order to avoid sharp turns, there is a constraint of [-25 ,25] on this. Similarly, brake has a range of [-1,1]. Negative number is used to represent braking which position number is the acceleration of the model. 
+[x,y,ψ,v] is the state of the car, L​f​​ is a physical characteristic of the vehicle, and [δ,a] are the actuators of my model. δ is used to represent the steering wheel. In order to avoid sharp turns, there is a constraint of [-25 ,25] on this. Similarly, brake has a range of [-1,1]. Negative number is used to represent braking which position number is the acceleration of the model.Cross track error (cte) and ψ error (eψ) were also used to build the cost function.
 
 Following image from lecture demonstrates the Model equations in concise way:
 
 ![Model](model.png)
 
+WHile optimizing the model for maximum speed, I had to expriment with multiple hyperparameters. The model has a predefined latency of 100ms which accounts for actuators latency in real world. As such the state of car was projected 100ms into future. 
+I used Time step duration of 0.1 ms which matches the actuator response time. Also, for time steps I experimented with multiple values. However, if we keep more values for prediction, the model was geting into higher oscillation and even stopped working after few seconds. Here is an example of stopped car with N=30. 
 
+![Stop](stop.png)
+
+For a stable run, I had to settle or 2sec duration. Which means my N was 20 and dt was 0.1.
+
+I tuned the cost function parameters by trial-and-error method.The best speed and stability was achieved with following cost parameters. It was possible to complete the track at higher speed by increasing CTE_W but car was oscillating and going out of center far too much. 
+
+const double  CTE_W = 2.0;
+const double EPSI_W=  1;
+const double V_W = 1;
+const double  DELTA_W  =10000;
+const double  A_W =  50;
+const double  DDELTA_W = 1;
+const double DA_W =  1;
 
